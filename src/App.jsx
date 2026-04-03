@@ -1,9 +1,9 @@
+import Todo from './components/Todo';
+
 const App = () => {
   return (
-    <div>
-      <h1>TO do List</h1>
-    </div>
-  );
-};
+    <Todo />
+  )
+}
 
-export default App;
+export default App
