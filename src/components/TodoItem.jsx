@@ -1,21 +1,23 @@
 const TodoItem = (props) => {
-
-  const { 
-    className = '',
+  const {
+    className = "",
     id,
-    title, 
-    isDone 
+    title,
+    isDone,
+    onDeleteTaskButtonClick,
+    onTaskCompleteChange,
   } = props;
 
-  console.log(title, isDone);
   return (
     <li className={`todo-item ${className}`}>
       <input
         className="todo-item__checkbox"
         id={id}
         type="checkbox"
-        checked = {isDone}
-        readOnly
+        checked={isDone}
+        onChange={({target}) => {
+          onTaskCompleteChange(id, target.checked)
+        }}
       />
       <label className="todo-item__label" htmlFor={id}>
         {title}
@@ -24,6 +26,7 @@ const TodoItem = (props) => {
         className="todo-item__delete-button"
         aria-label="Delete"
         title="Delete"
+        onClick={() => onDeleteTaskButtonClick(id)}
       >
         <svg
           width="20"
